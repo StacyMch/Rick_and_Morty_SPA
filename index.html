@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Rick and Morty: Character Guide</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container header__body">
+            <div class="header__burger">
+                <span></span>
+            </div>
+            <a href="https://rickandmorty.fandom.com/wiki/Rickipedia" class="header__logo" target="_blank">
+                        <img onmouseover="paintBackground()" onmouseout="back()" class="logo" src="img/logo.png" alt="Rick and Morty">
+                    </a>
+            <!-- меню под бургером -->
+            <div class="header__menu">
+                <ul class="header__list">
+                    <li>
+                        <a onmouseover="paintBackground()" onmouseout="back()" onclick="renderCatalog()" href="#frame" class="header__link">Character Guide</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="renderInfo()" class="header__link">Info</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="renderContacts()" class="header__link">Contacts</a>
+                    </li>
+                    <li>
+                        <a href="#footer" class="header__link">Subscribe</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main class="main-container">
+        <div id="frame" class="frame">
+            
+        </div>
+    </main>
+    <footer id="footer" class="footer">
+        <p class="subscribe-text">Subscribe</p>
+        <form class="flex-row" method="GET" target="_blank" action="https://api.telegram.org/bot5749049101:AAFc6ZVsFV9tRDaK8yWplqQ-8FMKs_n0VKA/sendMessage">
+            <input name="chat_id" type="hidden" value="224039891">
+            <input class="form" type="text" name="text" placeholder="email@mail.com">
+            <button class="btn" type="submit">Submit</button>
+        </form>
+    </footer>
+    <template id="tmpl-catalog">
+        <div class="card">
+            <div onclick="renderCard(${id})" class="card-title">
+                <img src='${card-img}' class="card-img">
+                <h2 id="h2">${card-name}</h2>
+            </div>
+            <div id="card-text" class="card-text">
+                <p>${species}, ${gender}</p>
+                <p class="status">${status}</p>
+            </div>
+        </div>
+    </template>
+    <template id="tmpl-card" class="tmpl-card">
+        <div class="separate-card-title">
+            <h2 id="h2" class="separate-card-name">${card-name}</h2>
+            <img src='${card-img}' class="card-img">
+        </div>
+        <div id="card-text" class="separate-card-text alignment-left">
+            <p><span>Species:</span> ${species}</p>
+            <p><span>Gender:</span> ${gender}</p>
+            <p class="status"><span>Status:</span> ${status}</p>
+            <p><span>Origin:</span> ${origin}</p>
+            <p><span>Location:</span> ${location}</p>
+            <p class="appearance"><span>First appearance in:</span><br>${episode-number} ${episode-name}</p>
+        </div>
+    </template>
+    <template id="tmpl-info">
+        <h1 class="info-title">${info-title}</h1>
+        <img class="info-pic" src="${info-pic}" alt="">
+        <p class="info-text">${info-text}</p>
+    </template>
+    <template id="tmpl-contacts">
+        <div class="contacts-container">
+            <p class="contacts-text">Get in touch with us at any time!</p>
+            <p>Telegram: <a href="#" target="_blank">${telegram}</a></p>
+            <p>Vkontakte: <a href="#" target="_blank">${vk}</a></p>
+            <p>Email: ${email}</p>
+        </div>
+    </template>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script> 
+    <script src="js/main.js"></script>
+</body>
+</html>
